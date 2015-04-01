@@ -41,6 +41,7 @@ group :development, :test do
   gem 'spring'
 end
 
+gem 'slim-rails'
 gem 'twitter-bootstrap-rails'
 gem 'therubyracer'
 gem 'less-rails'

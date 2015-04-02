@@ -42,9 +42,7 @@ group :development, :test do
 end
 
 gem 'slim-rails'
-gem 'twitter-bootstrap-rails', '~> 3.2.1.rc1'#, :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
+gem 'twitter-bootstrap-rails', '~> 3.2.1.rc1'
 gem 'therubyracer'
 gem 'less-rails'
 gem 'devise'
-gem 'cancan'
-gem 'mongoid'

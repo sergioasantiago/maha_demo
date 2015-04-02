@@ -6,6 +6,28 @@ p
   strong= model_class.human_attribute_name(:nome) + ':'
   br
   = @consultant.name
+p
+  strong= model_class.human_attribute_name(:rede) + ':'
+  br
+  = @consultant.network.name
+p
+  h3= model_class.human_attribute_name(:empresas)
+  - if @consultant.companies_consultants.empty?
+    ' Nenhuma empresa assossiada
+  - else
+    table.table.table-hover
+      thead
+        tr
+          th
+            = model_class.human_attribute_name(:nome)
+          th
+            = model_class.human_attribute_name(:assossiada_em)
+      tbody
+        - @consultant.companies_consultants.each do |companyconsultant|
+          tr
+            td = companyconsultant.company.name
+            td = l companyconsultant.created_at, :format => :short
+  br
 
 = link_to t('.back', :default => t("helpers.links.back")), consultants_path, :class => 'btn btn-default'
 '

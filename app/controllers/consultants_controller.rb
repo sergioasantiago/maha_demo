@@ -1,5 +1,4 @@
 class ConsultantsController < ApplicationController
-  before_action :authenticate_user!
   before_action :set_consultant, only: [:show, :edit, :update, :destroy]
 
   # GET /consultants
@@ -16,6 +15,7 @@ class ConsultantsController < ApplicationController
   # GET /consultants/new
   def new
     @consultant = Consultant.new
+    @companies = Company.all
   end
 
   # GET /consultants/1/edit
@@ -29,7 +29,7 @@ class ConsultantsController < ApplicationController
 
     respond_to do |format|
       if @consultant.save
-        format.html { redirect_to @consultant, notice: 'Consultant was successfully created.' }
+        format.html { redirect_to @consultant, notice: 'Consultor criado com sucesso.' }
         format.json { render :show, status: :created, location: @consultant }
       else
         format.html { render :new }
@@ -43,7 +43,7 @@ class ConsultantsController < ApplicationController
   def update
     respond_to do |format|
       if @consultant.update(consultant_params)
-        format.html { redirect_to @consultant, notice: 'Consultant was successfully updated.' }
+        format.html { redirect_to @consultant, notice: 'Consultor atualizado com sucesso.' }
         format.json { render :show, status: :ok, location: @consultant }
       else
         format.html { render :edit }
@@ -57,7 +57,7 @@ class ConsultantsController < ApplicationController
   def destroy
     @consultant.destroy
     respond_to do |format|
-      format.html { redirect_to consultants_url, notice: 'Consultant was successfully destroyed.' }
+      format.html { redirect_to consultants_url, notice: 'Consultor removido com sucesso.' }
       format.json { head :no_content }
     end
   end
@@ -70,6 +70,6 @@ class ConsultantsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def consultant_params
-      params.require(:consultant).permit(:name)
+      params.require(:consultant).permit(:name, :network_id, {company_ids: []})
     end
 end

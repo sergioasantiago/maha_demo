@@ -1,5 +1,5 @@
 class NetworksController < ApplicationController
-  before_action :authenticate_user!
+  #before_action :authenticate_network!
   before_action :set_network, only: [:show, :edit, :update, :destroy]
 
   # GET /networks
@@ -29,7 +29,7 @@ class NetworksController < ApplicationController
 
     respond_to do |format|
       if @network.save
-        format.html { redirect_to @network, notice: 'Network was successfully created.' }
+        format.html { redirect_to @network, notice: 'Rede criada com sucesso.' }
         format.json { render :show, status: :created, location: @network }
       else
         format.html { render :new }
@@ -43,7 +43,7 @@ class NetworksController < ApplicationController
   def update
     respond_to do |format|
       if @network.update(network_params)
-        format.html { redirect_to @network, notice: 'Network was successfully updated.' }
+        format.html { redirect_to @network, notice: 'Rede atualizada com sucesso.' }
         format.json { render :show, status: :ok, location: @network }
       else
         format.html { render :edit }
@@ -57,7 +57,7 @@ class NetworksController < ApplicationController
   def destroy
     @network.destroy
     respond_to do |format|
-      format.html { redirect_to networks_url, notice: 'Network was successfully destroyed.' }
+      format.html { redirect_to networks_url, notice: 'Rede removida com sucesso.' }
       format.json { head :no_content }
     end
   end

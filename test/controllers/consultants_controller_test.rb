@@ -18,7 +18,7 @@ class ConsultantsControllerTest < ActionController::TestCase
 
   test "should create consultant" do
     assert_difference('Consultant.count') do
-      post :create, consultant: { name: @consultant.name }
+      post :create, consultant: { name: @consultant.name, network_id: @consultant.network_id }
     end
 
     assert_redirected_to consultant_path(assigns(:consultant))
@@ -35,7 +35,7 @@ class ConsultantsControllerTest < ActionController::TestCase
   end
 
   test "should update consultant" do
-    patch :update, id: @consultant, consultant: { name: @consultant.name }
+    patch :update, id: @consultant, consultant: { name: @consultant.name, network_id: @consultant.network_id }
     assert_redirected_to consultant_path(assigns(:consultant))
   end
 

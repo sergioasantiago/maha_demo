@@ -144,7 +144,7 @@ pt_BR:
       destroy: "Apagar"
       new: "Criar"
       edit: "Editar"
-      donate: "Doar"
+      save: "Salvar"
     titles:
       edit: "Editar %{model}"
       save: "Salvar %{model}"

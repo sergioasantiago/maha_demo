@@ -6,6 +6,7 @@ table.table.table-striped
     tr
       th= model_class.human_attribute_name(:id)
       th= model_class.human_attribute_name(:nome)
+      th= model_class.human_attribute_name(:consultores)
       th= model_class.human_attribute_name(:criado_em)
       th=t '.actions', :default => t("helpers.actions")
   tbody
@@ -13,7 +14,8 @@ table.table.table-striped
       tr
         td= link_to network.id, network_path(network)
         td= network.name
-        td=l network.created_at
+        td= network.consultants.size
+        td=l network.created_at, :format => :short
         td
           = link_to t('.edit', :default => t("helpers.links.edit")), edit_network_path(network), :class => 'btn btn-default btn-xs'
           '

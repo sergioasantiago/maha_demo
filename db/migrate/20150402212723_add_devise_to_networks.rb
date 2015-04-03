@@ -1,6 +1,6 @@
-class AddDeviseToAdminConsultants < ActiveRecord::Migration
+class AddDeviseToNetworks < ActiveRecord::Migration
   def self.up
-    change_table(:admin_consultants) do |t|
+    change_table(:networks) do |t|
       ## Database authenticatable
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
@@ -30,16 +30,15 @@ class AddDeviseToAdminConsultants < ActiveRecord::Migration
       # t.string   :unlock_token # Only if unlock strategy is :email or :both
       # t.datetime :locked_at
 
-      t.string :network
 
       # Uncomment below if timestamps were not included in your original model.
       # t.timestamps
     end
 
-    add_index :admin_consultants, :email,                unique: true
-    add_index :admin_consultants, :reset_password_token, unique: true
-    # add_index :admin_consultants, :confirmation_token,   unique: true
-    # add_index :admin_consultants, :unlock_token,         unique: true
+    add_index :networks, :email,                unique: true
+    add_index :networks, :reset_password_token, unique: true
+    # add_index :networks, :confirmation_token,   unique: true
+    # add_index :networks, :unlock_token,         unique: true
   end
 
   def self.down

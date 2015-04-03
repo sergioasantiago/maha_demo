@@ -21,7 +21,7 @@ class CompaniesControllerTest < ActionController::TestCase
       post :create, company: { name: @company.name }
     end
 
-    assert_redirected_to admin_company_path(assigns(:company))
+    assert_redirected_to company_path(assigns(:company))
   end
 
   test "should show company" do
@@ -36,7 +36,7 @@ class CompaniesControllerTest < ActionController::TestCase
 
   test "should update company" do
     patch :update, id: @company, company: { name: @company.name }
-    assert_redirected_to admin_company_path(assigns(:company))
+    assert_redirected_to company_path(assigns(:company))
   end
 
   test "should destroy company" do
@@ -44,6 +44,6 @@ class CompaniesControllerTest < ActionController::TestCase
       delete :destroy, id: @company
     end
 
-    assert_redirected_to admin_companies_path
+    assert_redirected_to companies_path
   end
 end

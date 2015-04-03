@@ -1,24 +1,18 @@
 Rails.application.routes.draw do
 
-  devise_for :networks, class_name: "Admin::Network"
-  devise_for :consultants, class_name: "Admin::Consultant"
-  devise_for :companies, class_name: "Admin::Company"
-  devise_for :admins, class_name: "Admin::Admin"
+  devise_for :networks, :consultants, :companies, :admins
 
-  namespace :admin do
-
-    root to: 'index#index'
-
-    resources :consultants
-
-    resources :networks
-
-    resources :companies
+  scope '/admin' do
+    resources :companies, :consultants, :networks
   end
 
-  resources :consultants
+  get 'admins/index'
 
+  get 'consultants/profile'
 
+  get 'networks/profile'
+
+  get 'companies/profile'
 
   root to: 'index#index'
 

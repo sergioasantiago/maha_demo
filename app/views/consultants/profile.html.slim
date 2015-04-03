@@ -1,0 +1,39 @@
+- content_for :header do
+  li= link_to "Desconectar", destroy_consultant_session_path, :method => :delete
+
+- model_class = Consultant
+.page-header
+  h1
+    ' Bem Vindo Consultor
+    = @consultant.name
+
+p
+  strong= model_class.human_attribute_name(:email) + ':'
+  br
+  = @consultant.email
+
+p
+  strong= model_class.human_attribute_name(:rede) + ':'
+  br
+  - if @consultant.network?
+    = @consultant.network.name
+  - else
+    ' Nenhuma
+
+p
+  h3= model_class.human_attribute_name(:empresas)
+  - if @consultant.companies_consultants.empty?
+    ' Nenhuma empresa assossiada
+  - else
+    table.table.table-hover
+      thead
+        tr
+          th
+            = model_class.human_attribute_name(:nome)
+          th
+            = model_class.human_attribute_name(:assossiada_em)
+      tbody
+        - @company.companies_consultants.each do |companyconsultant|
+          tr
+            td = companyconsultant.consultant.name
+            td = l companyconsultant.created_at, :format => :short

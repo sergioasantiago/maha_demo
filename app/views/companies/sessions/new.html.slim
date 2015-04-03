@@ -1,0 +1,21 @@
+h2
+  | Entrar como Empresa
+= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "form form-horizontal company" }) do |f|
+  .form-group
+    = f.label :email, :class => 'control-label col-lg-2'
+    .col-lg-10
+      = f.email_field :email, autofocus: true, :class => 'form-control'
+  .form-group
+    = f.label :password, :class => 'control-label col-lg-2'
+    .col-lg-10
+      = f.password_field :password, autocomplete: "off", :class => 'form-control'
+  - if devise_mapping.rememberable?
+    .form-group
+      .col-lg-1
+      = f.check_box :remember_me, :class => 'control-label col-lg-1'
+      = f.label :lembrar_de_mim
+  .actions
+    = f.submit "Entrar", :class => 'btn btn-primary'
+  br
+
+= render "devise/shared/links"

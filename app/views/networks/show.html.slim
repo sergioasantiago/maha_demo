@@ -1,0 +1,32 @@
+- model_class = Network
+.page-header
+  h1=t '.title', :default => model_class.human_attribute_name(:rede)
+
+p
+  strong= model_class.human_attribute_name(:nome) + ':'
+  br
+  = @network.name
+p
+  h3= model_class.human_attribute_name(:consultores)
+  - if @network.consultants.empty?
+    ' Nenhum consultor afialiado
+  -else
+    table.table.table-hover
+      thead
+        tr
+          th
+            = model_class.human_attribute_name(:nome)
+          th
+            = model_class.human_attribute_name(:afiliado_em)
+      tbody
+        - @network.consultants.each do |consultant|
+          tr
+            td = consultant.name
+            td = l consultant.created_at, :format => :short
+  br
+
+= link_to t('.back', :default => t("helpers.links.back")), networks_path, :class => 'btn btn-default'
+'
+= link_to t('.edit', :default => t("helpers.links.edit")), edit_network_path(@network), :class => 'btn btn-default'
+'
+= link_to t('.destroy', :default => t("helpers.links.destroy")), network_path(@network), :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'

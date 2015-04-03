@@ -1,3 +1,5 @@
-class Admin < ActiveRecord::Base
-  devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable
+module Admin
+  def self.table_name_prefix
+    'admin_'
+  end
 end

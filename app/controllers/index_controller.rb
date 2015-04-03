@@ -1,3 +1,3 @@
 class IndexController < ApplicationController
-  layout "index"
+  layout false
 end

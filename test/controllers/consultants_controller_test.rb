@@ -21,7 +21,7 @@ class ConsultantsControllerTest < ActionController::TestCase
       post :create, consultant: { name: @consultant.name, network_id: @consultant.network_id }
     end
 
-    assert_redirected_to consultant_path(assigns(:consultant))
+    assert_redirected_to admin_consultant_path(assigns(:consultant))
   end
 
   test "should show consultant" do
@@ -36,7 +36,7 @@ class ConsultantsControllerTest < ActionController::TestCase
 
   test "should update consultant" do
     patch :update, id: @consultant, consultant: { name: @consultant.name, network_id: @consultant.network_id }
-    assert_redirected_to consultant_path(assigns(:consultant))
+    assert_redirected_to admin_consultant_path(assigns(:consultant))
   end
 
   test "should destroy consultant" do
@@ -44,6 +44,6 @@ class ConsultantsControllerTest < ActionController::TestCase
       delete :destroy, id: @consultant
     end
 
-    assert_redirected_to consultants_path
+    assert_redirected_to admin_consultants_path
   end
 end

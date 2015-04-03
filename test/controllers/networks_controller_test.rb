@@ -21,7 +21,7 @@ class NetworksControllerTest < ActionController::TestCase
       post :create, network: { name: @network.name }
     end
 
-    assert_redirected_to network_path(assigns(:network))
+    assert_redirected_to admin_network_path(assigns(:network))
   end
 
   test "should show network" do
@@ -36,7 +36,7 @@ class NetworksControllerTest < ActionController::TestCase
 
   test "should update network" do
     patch :update, id: @network, network: { name: @network.name }
-    assert_redirected_to network_path(assigns(:network))
+    assert_redirected_to admin_network_path(assigns(:network))
   end
 
   test "should destroy network" do
@@ -44,6 +44,6 @@ class NetworksControllerTest < ActionController::TestCase
       delete :destroy, id: @network
     end
 
-    assert_redirected_to networks_path
+    assert_redirected_to admin_networks_path
   end
 end

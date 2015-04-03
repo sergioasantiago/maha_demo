@@ -13,7 +13,7 @@
 
 ActiveRecord::Schema.define(version: 20150402212842) do
 
-  create_table "admins", force: :cascade do |t|
+  create_table "admin_admins", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
@@ -28,10 +28,10 @@ ActiveRecord::Schema.define(version: 20150402212842) do
     t.datetime "updated_at"
   end
 
-  add_index "admins", ["email"], name: "index_admins_on_email", unique: true
-  add_index "admins", ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  add_index "admin_admins", ["email"], name: "index_admin_admins_on_email", unique: true
+  add_index "admin_admins", ["reset_password_token"], name: "index_admin_admins_on_reset_password_token", unique: true
 
-  create_table "companies", force: :cascade do |t|
+  create_table "admin_companies", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
@@ -47,20 +47,20 @@ ActiveRecord::Schema.define(version: 20150402212842) do
     t.string   "last_sign_in_ip"
   end
 
-  add_index "companies", ["email"], name: "index_companies_on_email", unique: true
-  add_index "companies", ["reset_password_token"], name: "index_companies_on_reset_password_token", unique: true
+  add_index "admin_companies", ["email"], name: "index_admin_companies_on_email", unique: true
+  add_index "admin_companies", ["reset_password_token"], name: "index_admin_companies_on_reset_password_token", unique: true
 
-  create_table "companies_consultants", force: :cascade do |t|
-    t.integer  "company_id"
-    t.integer  "consultant_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+  create_table "admin_companies_consultants", force: :cascade do |t|
+    t.integer  "admin_company_id"
+    t.integer  "admin_consultant_id"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
   end
 
-  add_index "companies_consultants", ["company_id"], name: "index_companies_consultants_on_company_id"
-  add_index "companies_consultants", ["consultant_id"], name: "index_companies_consultants_on_consultant_id"
+  add_index "admin_companies_consultants", ["admin_company_id"], name: "index_admin_companies_consultants_on_admin_company_id"
+  add_index "admin_companies_consultants", ["admin_consultant_id"], name: "index_admin_companies_consultants_on_admin_consultant_id"
 
-  create_table "consultants", force: :cascade do |t|
+  create_table "admin_consultants", force: :cascade do |t|
     t.string   "name"
     t.integer  "network_id"
     t.datetime "created_at",                          null: false
@@ -78,11 +78,11 @@ ActiveRecord::Schema.define(version: 20150402212842) do
     t.string   "network"
   end
 
-  add_index "consultants", ["email"], name: "index_consultants_on_email", unique: true
-  add_index "consultants", ["network_id"], name: "index_consultants_on_network_id"
-  add_index "consultants", ["reset_password_token"], name: "index_consultants_on_reset_password_token", unique: true
+  add_index "admin_consultants", ["email"], name: "index_admin_consultants_on_email", unique: true
+  add_index "admin_consultants", ["network_id"], name: "index_admin_consultants_on_network_id"
+  add_index "admin_consultants", ["reset_password_token"], name: "index_admin_consultants_on_reset_password_token", unique: true
 
-  create_table "networks", force: :cascade do |t|
+  create_table "admin_networks", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
@@ -98,7 +98,7 @@ ActiveRecord::Schema.define(version: 20150402212842) do
     t.string   "last_sign_in_ip"
   end
 
-  add_index "networks", ["email"], name: "index_networks_on_email", unique: true
-  add_index "networks", ["reset_password_token"], name: "index_networks_on_reset_password_token", unique: true
+  add_index "admin_networks", ["email"], name: "index_admin_networks_on_email", unique: true
+  add_index "admin_networks", ["reset_password_token"], name: "index_admin_networks_on_reset_password_token", unique: true
 
 end

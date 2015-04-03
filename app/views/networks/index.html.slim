@@ -20,5 +20,3 @@ table.table.table-striped
           = link_to t('.edit', :default => t("helpers.links.edit")), edit_network_path(network), :class => 'btn btn-default btn-xs'
           '
           = link_to t('.destroy', :default => t("helpers.links.destroy")), network_path(network), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs btn-danger'
-
-= link_to t('.new', :default => t("helpers.links.new")), new_network_path, :class => 'btn btn-primary'

@@ -1,13 +1,13 @@
 Rails.application.routes.draw do
 
-  resources :consultants
+  devise_for :networks, :companies, :consultants, :admins
 
-  devise_for :companies, :networks, :consultants
+  resources :consultants
 
   resources :networks
 
   resources :companies
 
-  root :to => 'companies#index'
+  root to: 'index#index'
 
 end

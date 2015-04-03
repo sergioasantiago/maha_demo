@@ -1,4 +1,5 @@
 class ConsultantsController < ApplicationController
+  before_action :authenticate_admin!
   before_action :set_consultant, only: [:show, :edit, :update, :destroy]
 
   # GET /consultants

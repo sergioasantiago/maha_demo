@@ -1,0 +1,27 @@
+h2
+  | Cadastrar Rede
+= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: "form form-horizontal company"}) do |f|
+  = devise_error_messages!
+
+  .form-group
+    = f.label :nome, :class => 'control-label col-lg-2'
+    .col-lg-10
+      = f.text_field :name, :class => 'form-control'
+    = f.error_span(:name)
+  .form-group
+    = f.label :email, :class => 'control-label col-lg-2'
+    .col-lg-10
+      = f.email_field :email, :class => 'form-control'
+    = f.error_span(:email)
+  .form-group
+    = f.label :password, :class => 'control-label col-lg-2'
+    .col-lg-10
+      = f.password_field :password, autocomplete: "off", :class => 'form-control'
+    = f.error_span(:password)
+  .form-group
+    = f.label :password_confirmation, :class => 'control-label col-lg-2'
+    .col-lg-10
+      = f.password_field :password_confirmation, autocomplete: "off", :class => 'form-control'
+    = f.error_span(:password_confirmation)
+  .actions
+    = f.submit t("helpers.links.register"), :class => 'btn btn-primary'

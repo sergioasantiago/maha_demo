@@ -145,6 +145,7 @@ pt_BR:
       new: "Criar"
       edit: "Editar"
       save: "Salvar"
+      register: "Cadastrar"
     titles:
       edit: "Editar %{model}"
       save: "Salvar %{model}"

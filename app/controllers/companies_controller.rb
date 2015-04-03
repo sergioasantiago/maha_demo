@@ -1,6 +1,8 @@
 class CompaniesController < ApplicationController
-  before_action :authenticate_admin!
-  before_action :authenticate_admin!, only: [:profile]
+  layout "admin", except: [:profile]
+
+  before_action :authenticate_company!, only: [:profile]
+  before_action :authenticate_admin!, except: [:profile]
   before_action :set_company, only: [:show, :edit, :update, :destroy]
 
   # GET /companies
@@ -23,7 +25,9 @@ class CompaniesController < ApplicationController
   def edit
   end
 
+  # GET /companies/profile
   def profile
+    @company = current_company
   end
 
   # POST /companies

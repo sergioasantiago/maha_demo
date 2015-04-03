@@ -1,5 +1,8 @@
 class ConsultantsController < ApplicationController
-  before_action :authenticate_admin!
+  layout "admin", except: [:profile]
+
+  before_action :authenticate_consultant!, only: [:profile]
+  before_action :authenticate_admin!, except: [:profile]
   before_action :set_consultant, only: [:show, :edit, :update, :destroy]
 
   # GET /consultants
@@ -21,6 +24,11 @@ class ConsultantsController < ApplicationController
 
   # GET /consultants/1/edit
   def edit
+  end
+
+  # GET /consultants/profile
+  def profile
+    @consultant = current_consultant
   end
 
   # POST /consultants

@@ -1,5 +1,8 @@
 class NetworksController < ApplicationController
-  before_action :authenticate_admin!
+  layout "admin", except: [:profile]
+
+  before_action :authenticate_network!, only: [:profile]
+  before_action :authenticate_admin!, except: [:profile]
   before_action :set_network, only: [:show, :edit, :update, :destroy]
 
   # GET /networks
@@ -20,6 +23,11 @@ class NetworksController < ApplicationController
 
   # GET /networks/1/edit
   def edit
+  end
+
+  # GET /network/profile
+  def profile
+    @network = current_network
   end
 
   # POST /networks

@@ -2,35 +2,7 @@
 .page-header
   h1=t '.title', :default => model_class.human_attribute_name(:consultor)
 
-p
-  strong= model_class.human_attribute_name(:nome) + ':'
-  br
-  = @consultant.name
-p
-  strong= model_class.human_attribute_name(:rede) + ':'
-  br
-  - if @consultant.network?
-    = @consultant.network.name
-  - else
-    ' Nenhuma
-p
-  h3= model_class.human_attribute_name(:empresas)
-  - if @consultant.companies_consultants.empty?
-    ' Nenhuma empresa assossiada
-  - else
-    table.table.table-hover
-      thead
-        tr
-          th
-            = model_class.human_attribute_name(:nome)
-          th
-            = model_class.human_attribute_name(:assossiada_em)
-      tbody
-        - @consultant.companies_consultants.each do |companyconsultant|
-          tr
-            td = companyconsultant.company.name
-            td = l companyconsultant.created_at, :format => :short
-  br
+= render :partial => "details"
 
 = link_to t('.back', :default => t("helpers.links.back")), consultants_path, :class => 'btn btn-default'
 '

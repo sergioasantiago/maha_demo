@@ -1,0 +1,26 @@
+-model_class = Company
+p
+  strong= model_class.human_attribute_name(:nome) + ':'
+  br
+  = @company.name
+p
+  h3= model_class.human_attribute_name(:consultores)
+  - if @company.companies_consultants.empty?
+    ' Nenhum consultor associado
+  - else
+    table.table.table-hover
+      thead
+        tr
+          th
+            = model_class.human_attribute_name(:nome)
+          th
+            = model_class.human_attribute_name(:email)
+          th
+            = model_class.human_attribute_name(:associada_em)
+      tbody
+        - @company.companies_consultants.each do |companyconsultant|
+          tr
+            td = companyconsultant.consultant.name
+            td = companyconsultant.consultant.email
+            td = l companyconsultant.created_at, :format => :short
+  br

@@ -1,0 +1,29 @@
+- model_class = Consultant
+p
+  strong= model_class.human_attribute_name(:nome) + ':'
+  br
+  = @consultant.name
+p
+  strong= model_class.human_attribute_name(:rede) + ':'
+  br
+  - if @consultant.network
+    = @consultant.network.name
+  - else
+    ' Nenhuma
+p
+  h3= model_class.human_attribute_name(:empresas)
+  - if @consultant.companies_consultants.empty?
+    ' Nenhuma empresa associada
+  - else
+    table.table.table-hover
+      thead
+        tr
+          th = model_class.human_attribute_name(:nome)
+          th = model_class.human_attribute_name(:email)
+          th = model_class.human_attribute_name(:associada_em)
+      tbody
+        - @consultant.companies_consultants.each do |companyconsultant|
+          tr
+            td = companyconsultant.company.name
+            td = companyconsultant.company.email
+            td = l companyconsultant.created_at, :format => :short

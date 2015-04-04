@@ -1,0 +1,51 @@
+- model_class = Network
+p
+  strong= model_class.human_attribute_name(:nome) + ':'
+  br
+  = @network.name
+
+p
+  strong= model_class.human_attribute_name(:email) + ':'
+  br
+  = @network.email
+
+p
+  strong= model_class.human_attribute_name(:consultores_afiliados) + ':'
+  br
+  = @network.consultants.size
+
+p
+  h3= model_class.human_attribute_name(:consultores)
+  - if @network.consultants.empty?
+    ' Nenhum consultor afiliado
+  - else
+    #consultants.panel-group aria-multiselectable="true" role="tablist"
+    - @network.consultants.each do |consultant|
+      .panel.panel-default
+        .panel-heading role="tab" id="heading_#{consultant.id}"
+          h4.panel-title
+            a aria-controls="#collapse_#{consultant.id}" aria-expanded="true" data-parent="#consultants" data-toggle="collapse" href="#collapse_#{consultant.id}"
+              = consultant.name
+        .panel-collapse.collapse aria-labelledby="heading_#{consultant.id}" role="tabpanel" id="collapse_#{consultant.id}"
+          .panel-body
+            p
+              strong= model_class.human_attribute_name(:afiliado_em) + ':'
+              br
+              = l consultant.created_at, :format => :short
+
+            h4 = model_class.human_attribute_name(:empresas_associadas)
+            - if consultant.companies_consultants.empty?
+              ' Nenhuma empresa associada
+            - else
+              table.table.table-hover
+                thead
+                  tr
+                    th
+                      = model_class.human_attribute_name(:nome)
+                    th
+                      = model_class.human_attribute_name(:associada_em)
+                tbody
+                  - consultant.companies_consultants.each do |companyconsultant|
+                    tr
+                      td = companyconsultant.company.name
+                      td = l companyconsultant.created_at, :format => :short

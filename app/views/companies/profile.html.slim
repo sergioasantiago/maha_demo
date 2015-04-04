@@ -7,25 +7,4 @@
     ' Bem Vinda Empresa
     = @company.name
 
-p
-  strong= model_class.human_attribute_name(:email) + ':'
-  br
-  = @company.email
-
-p
-  h3= model_class.human_attribute_name(:consultores)
-  - if @company.companies_consultants.empty?
-    ' Nenhum consultor assossiado
-  - else
-    table.table.table-hover
-      thead
-        tr
-          th
-            = model_class.human_attribute_name(:nome)
-          th
-            = model_class.human_attribute_name(:assossiada_em)
-      tbody
-        - @company.companies_consultants.each do |companyconsultant|
-          tr
-            td = companyconsultant.consultant.name
-            td = l companyconsultant.created_at, :format => :short
+= render :partial => "details"

@@ -10,7 +10,7 @@
       = f.collection_select :network_id, Network.all, :id, :name, { prompt: true }, { :class => 'form-control' }
     = f.error_span(:network_id)
   .form-group
-    h3= Consultant.human_attribute_name(:empresas_assossiadas)
+    h3= Consultant.human_attribute_name(:empresas_associadas)
     .col-lg-10
       = f.collection_check_boxes(:company_ids, Company.all, :id, :name )
   .form-group

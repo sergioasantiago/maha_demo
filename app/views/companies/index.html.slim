@@ -4,15 +4,13 @@
 table.table.table-striped
   thead
     tr
-      th= model_class.human_attribute_name(:id)
       th= model_class.human_attribute_name(:nome)
       th= model_class.human_attribute_name(:criado_em)
       th=t '.actions', :default => t("helpers.actions")
   tbody
     - @companies.each do |company|
       tr
-        td= link_to company.id, company_path(company)
-        td= company.name
+        td= link_to company.name, company_path(company)
         td=l company.created_at, :format => :short
         td
           = link_to t('.edit', :default => t("helpers.links.edit")), edit_company_path(company), :class => 'btn btn-default btn-xs'

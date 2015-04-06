@@ -51,7 +51,20 @@ class ConsultantsController < ApplicationController
   # PATCH/PUT /consultants/1.json
   def update
     respond_to do |format|
+      
       if @consultant.update(consultant_params)
+        
+        @consultant.companies_consultants.each do |companies_consultants|
+          companies_consultants.destroy
+        end
+
+        @consultant.companies_consultants.clear
+        
+        @consultant.companies.each do |company|
+          companies_consultants = CompaniesConsultant.create(:company => company, :consultant => @consultant)
+          @consultant.companies_consultants << companies_consultants unless @consultant.companies_consultants.include?(companies_consultants) 
+        end
+
         format.html { redirect_to @consultant, notice: 'Consultor atualizado com sucesso.' }
         format.json { render :show, status: :ok, location: @consultant }
       else

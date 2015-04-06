@@ -1,10 +1,11 @@
 development:
   sessions:
     default:
-      database: cc_tJMJlABzVEcO
       hosts:
-        - localhost:27017
-      options:
+        - ds061391.mongolab.com:61391
+      database: heroku_app35553281
+      username: maha
+      password: maha123456
 
 development:
   sessions:
